@@ -18,7 +18,7 @@ export default class User extends BaseEntity {
     @Length(3)
     lastName: string;
 
-    @Column()
+    @Column({ unique: true })
     @IsString()
     @Length(6)
     dni: string;
