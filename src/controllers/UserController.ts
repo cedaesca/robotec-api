@@ -1,4 +1,3 @@
-import { open } from 'inspector';
 import User from '../entity/User';
 import Validator from '../utils/Validator';
 
@@ -23,11 +22,13 @@ export default class UserController {
         try {
             user = await user.save();
         } catch (error) {
-            // If all the validation pass
-            // There's only one case where
-            // this will fail and that's when
-            // email is already in use.
-            return res.status(422).send({ email: ['email is already in use'] });
+            if (error.code === 'ER_DUP_ENTRY') {
+                return res
+                    .status(422)
+                    .send({ error: 'Email or DNI already in use' });
+            }
+
+            return res.status(500).send({ error: 'Something went wrong.' });
         }
 
         // We don't want to expose the password
