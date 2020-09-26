@@ -1,4 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column, BeforeInsert } from 'typeorm';
+import {
+    Entity,
+    PrimaryGeneratedColumn,
+    Column,
+    BeforeInsert,
+    BeforeUpdate,
+} from 'typeorm';
 import { IsString, IsEmail, Length } from 'class-validator';
 import BaseEntity from './BaseEntity';
 import * as bcrypt from 'bcrypt';
@@ -33,6 +39,7 @@ export default class User extends BaseEntity {
     password: string;
 
     @BeforeInsert()
+    @BeforeUpdate()
     protected async hashPassword() {
         this.password = await bcrypt.hash(this.password, 8);
     }
