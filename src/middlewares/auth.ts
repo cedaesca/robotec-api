@@ -9,6 +9,8 @@ const auth = async (req, res, next) => {
 
         const user = await User.findOneOrFail({ id: decoded.user_id });
 
+        delete user.password;
+
         req.user = user;
 
         next();
