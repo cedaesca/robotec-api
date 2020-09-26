@@ -10,3 +10,7 @@ Cómo instalar el proyecto:
 6. Copiar el archivo `.env.example` y llamarlo `.env`
 7. Ajustar el `JWT_SECRET` en el archivo `.env`
 8. Ejecutar `npm start`
+
+## Documentación
+
+La documentación está disponible desde [Postman](https://documenter.getpostman.com/view/12882342/TVKHUFHg)
