@@ -36,8 +36,8 @@ export default class UserController {
         res.status(201).send(user);
     };
 
-    public static show = async (req, res) => {
-        res.send({ message: 'ok' });
+    public static show = async ({ user }, res) => {
+        res.send(user);
     };
 
     public static update = async (req, res) => {
