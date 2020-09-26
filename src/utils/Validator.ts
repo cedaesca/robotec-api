@@ -8,8 +8,8 @@ export default class Validator {
         this.entity = entity;
     }
 
-    public async check() {
-        const errors = await validate(this.entity);
+    public async check(skipMissingProperties = false) {
+        const errors = await validate(this.entity, { skipMissingProperties });
 
         if (errors.length > 0) {
             return this.formatErrors(errors);

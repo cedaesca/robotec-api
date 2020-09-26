@@ -1,7 +1,7 @@
 import User from '../entity/User';
 import Validator from '../utils/Validator';
 
-class UserController {
+export default class UserController {
     public static store = async ({ body: data }, res) => {
         let user = new User();
 
@@ -48,5 +48,3 @@ class UserController {
         res.send({ message: 'ok' });
     };
 }
-
-export default UserController;
