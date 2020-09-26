@@ -41,6 +41,8 @@ export default class User extends BaseEntity {
     @BeforeInsert()
     @BeforeUpdate()
     protected async hashPassword() {
-        this.password = await bcrypt.hash(this.password, 8);
+        if (typeof this.password !== 'undefined') {
+            this.password = await bcrypt.hash(this.password, 8);
+        }
     }
 }
