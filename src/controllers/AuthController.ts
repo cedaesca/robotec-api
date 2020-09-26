@@ -10,8 +10,8 @@ export default class AuthController {
         const credentials = new User();
         const validator = new Validator(credentials);
 
-        credentials.email = data.email;
-        credentials.password = data.password;
+        credentials.email = data.email ? data.email : '';
+        credentials.password = data.password ? data.password : '';
 
         const errors = await validator.check(true);
 
