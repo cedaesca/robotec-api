@@ -10,14 +10,16 @@ export default abstract class BaseEntity extends TypeOrm.BaseEntity {
 
     @TypeOrm.BeforeInsert()
     protected setCreatedAt() {
-        this.createdAt = new Date(
-            moment.unix(moment().unix()).format('YYYY-MM-DD HH:mm:ss')
-        );
+        this.createdAt = this.formatDate();
     }
 
     @TypeOrm.BeforeUpdate()
     protected setUpdatedAt() {
-        this.updatedAt = new Date(
+        this.updatedAt = this.formatDate();
+    }
+
+    private formatDate() {
+        return new Date(
             moment.unix(moment().unix()).format('YYYY-MM-DD HH:mm:ss')
         );
     }
